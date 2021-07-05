@@ -175,17 +175,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202106280644273_InitialModel.cs" />
-    <Compile Include="Migrations\202106280644273_InitialModel.Designer.cs">
-      <DependentUpon>202106280644273_InitialModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202106280755555_CreateTableCourse.cs" />
-    <Compile Include="Migrations\202106280755555_CreateTableCourse.Designer.cs">
-      <DependentUpon>202106280755555_CreateTableCourse.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202106280759586_PopulateCategoryTable.cs" />
-    <Compile Include="Migrations\202106280759586_PopulateCategoryTable.Designer.cs">
-      <DependentUpon>202106280759586_PopulateCategoryTable.cs</DependentUpon>
+    <Compile Include="Migrations\202107050821402_Create Table.cs" />
+    <Compile Include="Migrations\202107050821402_Create Table.Designer.cs">
+      <DependentUpon>202107050821402_Create Table.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -222,7 +214,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -275,14 +269,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202106280644273_InitialModel.resx">
-      <DependentUpon>202106280644273_InitialModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202106280755555_CreateTableCourse.resx">
-      <DependentUpon>202106280755555_CreateTableCourse.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202106280759586_PopulateCategoryTable.resx">
-      <DependentUpon>202106280759586_PopulateCategoryTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202107050821402_Create Table.resx">
+      <DependentUpon>202107050821402_Create Table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
