@@ -19,8 +19,13 @@ namespace bigschool.Models
         public Category Category { get; set; }
         [Required]
         public byte CategoryId { get; set; }
-        
+
+        public static implicit operator int(Course v)
+        {
+            throw new NotImplementedException();
+        }
     }
+
     
 
 }
