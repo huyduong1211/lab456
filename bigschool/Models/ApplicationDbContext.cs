@@ -41,5 +41,7 @@ namespace bigschool.Models
 
             base.OnModelCreating(modelBuilder);
         }
+
+        public System.Data.Entity.DbSet<bigschool.ViewModels.CourseViewModel> CourseViewModels { get; set; }
     }
 }

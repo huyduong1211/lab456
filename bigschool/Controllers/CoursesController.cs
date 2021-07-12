@@ -8,56 +8,68 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
+
 namespace bigschool.Controllers
-{
-    public class CoursesController : Controller
     {
-       
-        // GET: Courses
-        private readonly ApplicationDbContext _dbContext;
-        public CoursesController()
+        public class CoursesController : Controller
         {
-            _dbContext = new ApplicationDbContext();
-        }
-        [Authorize]
-        public ActionResult Attending()
-        {
-            var userId = User.Identity.GetUserId();
 
-            var courses = _dbContext.Attendances
-                .Where(a => a.AttendeeId == userId)
-                .Select(a => a.Course)
-                .Include(l => l.Lecturer)
-                .Include(l => l.Category)
-                .ToList();
-            
-            var viewModel = new CoursesViewModel
+            // GET: Courses
+            private readonly ApplicationDbContext _dbContext;
+            public CoursesController()
             {
-                UpcommingCourses = courses,
-                ShowAction = User.Identity.IsAuthenticated
-
-            };
-            return View(viewModel);
-        }
-        [Authorize]
-        public ActionResult Followings ()
-        {
-            var userId = User.Identity.GetUserId();
-
-            var courses = _dbContext.Followings
-                .Where(f => f. FollowerId == userId)
-                .Select(f => f.Followee)
-                .Include(l => l.Lecturer)
-                .Include(l => l.Category)
-                .ToList();
-
-            var viewModel = new CoursesViewModel
+                _dbContext = new ApplicationDbContext();
+            }
+            [Authorize]
+            public ActionResult Attending()
             {
-                UpcommingCourses = courses,
-                ShowAction = User.Identity.IsAuthenticated
+                var userId = User.Identity.GetUserId();
 
-            };
-            return View(viewModel);
+                var courses = _dbContext.Attendances
+                    .Where(a => a.AttendeeId == userId)
+                    .Select(a => a.Course)
+                    .Include(l => l.Lecturer)
+                    .Include(l => l.Category)
+                    .ToList();
+
+                var viewModel = new CoursesViewModel
+                {
+                    UpcommingCourses = courses,
+                    ShowAction = User.Identity.IsAuthenticated
+
+                };
+                return View(viewModel);
+            }
+            [Authorize]
+            public ActionResult Followings()
+            {
+                var userId = User.Identity.GetUserId();
+
+                var courses = _dbContext.Followings
+                    .Where(f => f.FollowerId == userId)
+                    .Select(f => f.Followee)
+                    
+                    .ToList();
+
+                
+                return View(courses);
+            }
+        [Authorize]
+        public ActionResult Mine()
+            {
+                var userId = User.Identity.GetUserId();
+
+                var courses = _dbContext.Courses
+                    .Where(c => c.LecturerId == userId && c.DateTime > DateTime.Now)
+                    .Include(l => l.Lecturer)
+                    .Include(l => l.Category)
+                    .ToList();
+
+
+            return View(courses);
         }
+
     }
-}
+    }
+
