@@ -12,6 +12,7 @@ namespace bigschool.Models
 
         public bool IsCanceled { get; set; }
 
+
         public ApplicationUser Lecturer { get; set; }
         [Required]
         public string LecturerId { get; set; }
