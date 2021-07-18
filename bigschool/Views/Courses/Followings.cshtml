@@ -1,4 +1,4 @@
-﻿@model IEnumerable<bigschool.Models.ApplicationUser>
+﻿@model IEnumerable<bigschool.Models.Course>
 @{
     ViewBag.Title = "Followings";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -9,15 +9,21 @@
     <ul class="course">
         @foreach (var course in Model)
         {
-            <li>
-               @course.UserName-@course.Name
-            </li>
+        <li>
+            <span>
+                @course.Lecturer.Name
+            </span>
+            
+            <span>
+                @course.Lecturer.Email
+            </span>
+        </li>
         }
     </ul>
 
     @section scripts{
         <script>
-            
+
         </script>
     }
 </div>

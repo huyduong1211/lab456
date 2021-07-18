@@ -27,7 +27,7 @@ namespace bigschool.Controllers
             {
                 FollowerId = userId,
                 FolloweeId = followingDto.FolloweeId
-               
+
             };
             _dbContext.Followings.Add(following);
             _dbContext.SaveChanges();

@@ -45,15 +45,11 @@ namespace bigschool.Controllers
             public ActionResult Followings()
             {
                 var userId = User.Identity.GetUserId();
-
-                var courses = _dbContext.Followings
-                    .Where(f => f.FollowerId == userId)
-                    .Select(f => f.Followee)
-                    
+                var courses = _dbContext.Courses
+                    .Where(c => c.LecturerId == userId)
+                    .Include(l => l.Lecturer)
                     .ToList();
-
-                
-                return View(courses);
+                    return View(courses);
             }
         [Authorize]
         public ActionResult Mine()
@@ -65,6 +61,19 @@ namespace bigschool.Controllers
                     .Include(l => l.Lecturer)
                     .Include(l => l.Category)
                     .ToList();
+
+
+            return View(courses);
+        }
+        public ActionResult ListCourse()
+        {
+            var userId = User.Identity.GetUserId();
+
+            var courses = _dbContext.Courses
+                .Where(c => c.LecturerId == userId)
+                .Include(l => l.Lecturer)
+                .Include(l => l.Category)
+                .ToList();
 
 
             return View(courses);

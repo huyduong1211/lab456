@@ -42,17 +42,29 @@
     <script>
 
         $(document).ready(function () {
-            $(".js-cancle-cource").click(function (e) {
+            $(".js-cancle-course").click(function (e) {
                 e.preventDefault();
                 var link = $(e.target);
-                bootbox.confirm("Are you sure to cancel"),
-                    function () {
-                        $.ajax({
-                            url: "/api/courses" + link.attr("data-course-id"),
-                            method: "DELETE"
-                        })
+                bootbox.confirm({
+                    title: "Cancle Course?",
+                    message: "Are you sure to cancel",
+                    buttons: {
+                        cancle: {
+                            label:'<i class="fa-fa-times"></i> Cancle'
+                        },
+                        confirm: {
+                            label: '<i class="fa-fa-check"></i> Confirm'
+                        }
+                    },
+
+                    callback: function (result) {
+                        if (result) {
+                            $.ajax({
+                                url: "/api/courses/" + link.attr("data-course-id"),
+                                method: "DELETE"
+                            })
                             .done(function () {
-                                link.parent("li").fadeOut(function () {
+                                link.parents("li").fadeOut(function () {
                                     $(this).remove();
                                 });
 
@@ -60,7 +72,9 @@
                             .fail(function () {
                                 alert("Something failed!");
                             });
-                    };
+                        }
+                    }
+                });
             });
         });
     </script>

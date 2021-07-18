@@ -11,7 +11,8 @@ namespace bigschool.Controllers.API
 {
     public class CoursesController : ApiController
     {
-        private readonly ApplicationDbContext _dbContext;
+        public ApplicationDbContext _dbContext { get; set; }
+        //private readonly ApplicationDbContext _dbContext;
         public CoursesController()
         {
             _dbContext = new ApplicationDbContext();

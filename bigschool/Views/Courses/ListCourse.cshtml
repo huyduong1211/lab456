@@ -1,0 +1,27 @@
+﻿@model IEnumerable<bigschool.Models.Course>
+
+    @{
+        ViewBag.Title = "ListCourse";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h2>ListCourse</h2>
+    @foreach (var course in Model)
+    {
+        <li>
+
+            <div class="details">
+                <span class="lecturer">
+                    @course.Lecturer.Name
+
+                </span>
+
+                <br />
+
+                <span class="category">
+                    @course.Category.Name
+                </span>
+                </div>
+        </li>
+    }
+
